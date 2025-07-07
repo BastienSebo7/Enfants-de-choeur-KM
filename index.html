@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servants de Messe - Guide Complet</title>
+    <title>Servants de Messe - Paroisse Saint François d'Assise de Keur Massar</title>
     <style>
         * {
             margin: 0;
@@ -287,7 +287,158 @@
         <header>
             <h1>⛪ Servants de Messe</h1>
             <p class="subtitle">Guide complet pour servir dignement à l'autel</p>
+
         </header>
+<!-- Diaporama section -->
+<section id="about" class="py-0">
+    <div class="container-fluid px-0">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7000">
+            
+            <!-- Indicateurs -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            
+            <!-- Slides -->
+            <div class="carousel-inner">
+
+                <!-- Deuxième image -->
+                <div class="carousel-item" style="background-image: url('Pré\ entré.jpg'); background-size: cover; background-position: center; height: 100vh; opacity: 0.9;">
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 text-center">
+                        <h1>Messe 11H</h1>
+                        <p>Sert</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    /* Centrer le texte verticalement et horizontalement */
+    .carousel-caption {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Ajouter une ombre au texte pour améliorer la lisibilité */
+        font-family: Arial, Helvetica, sans-serif; /* Police personnalisée */
+    }
+
+    /* Police importée via Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    /* Style du texte pour une meilleure lisibilité */
+    .carousel-caption h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+
+    .carousel-caption p {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+    }
+
+    /* Ajustement des images du carousel */
+    .carousel-item {
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        opacity: 0.9;
+    }
+
+    /* Personnalisation des boutons de navigation */
+        .custom-prev, .custom-next {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+    /* Positionnement pour centrer verticalement */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); /* Centre verticalement */
+        }
+
+        .custom-prev {
+            left: 10px; /* Distance depuis le bord gauche */
+        }
+
+        .custom-next {
+            right: 10px; /* Distance depuis le bord droit */
+        }
+
+        .custom-prev:hover, .custom-next:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Icônes des boutons */
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: white;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+</style>
+    <!-- Script pour diaporama -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("mySlides");
+        let autoSlideTimeout;
+    
+        // Fonction pour afficher une diapositive spécifique
+        function showSlide(n) {
+            // Réinitialiser la position de toutes les slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("show");
+                slides[i].classList.remove("exit");
+                slides[i].style.left = '100%';
+            }
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+    
+            // Applique l'effet de sortie à la diapositive actuelle
+            slides[slideIndex - 1].classList.remove("show");
+            slides[slideIndex - 1].classList.add("exit");
+    
+            // Afficher la nouvelle diapositive avec l'effet d'entrée de droite
+            slides[slideIndex - 1].classList.add("show");
+        }
+    
+        // Fonction pour changer de diapositive avec un effet d'entrée ou de sortie
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            if (slideIndex < 1) { slideIndex = slides.length; }
+            showSlide(slideIndex);
+            
+            // Redémarrer l'autoSlide après l'interaction manuelle
+            clearTimeout(autoSlideTimeout);
+            autoSlideTimeout = setTimeout(autoSlide, 7000); // Redémarre l'autoSlide après 7s
+        }
+    
+        // Fonction pour auto-slideshow
+        function autoSlide() {
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            showSlide(slideIndex);
+            autoSlideTimeout = setTimeout(autoSlide, 7000); // Change toutes les 7 secondes
+        }
+    
+        // Lancer le diaporama automatique
+        autoSlide();
+    </script>
+    
+<!-- Lien vers Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
         <nav class="nav-tabs">
             <button class="tab-button active" onclick="showTab('introduction')">Introduction</button>
