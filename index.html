@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servants de Messe - Guide Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            transform: scale(1.05);
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(247, 250, 252, 0.8);
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 4px solid #48bb78;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .step h4 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .prayer-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            font-style: italic;
+            border: 2px solid #fdcb6e;
+        }
+
+        .objects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .object-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .object-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .object-card h4 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 2px solid #81ecec;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 2px solid #fdcb6e;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .quiz-question {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #f7fafc;
+            border-color: #667eea;
+        }
+
+        .quiz-option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .quiz-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .quiz-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .quiz-correct {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+
+        .quiz-incorrect {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⛪ Servants de Messe</h1>
+            <p class="subtitle">Guide complet pour servir dignement à l'autel</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('introduction')">Introduction</button>
+            <button class="tab-button" onclick="showTab('preparation')">Préparation</button>
+            <button class="tab-button" onclick="showTab('deroulement')">Déroulement</button>
+            <button class="tab-button" onclick="showTab('objets')">Objets Sacrés</button>
+            <button class="tab-button" onclick="showTab('prieres')">Prières</button>
+            <button class="tab-button" onclick="showTab('quiz')">Quiz</button>
+        </nav>
+
+        <div id="introduction" class="tab-content active">
+            <h2>🙏 Qu'est-ce qu'un Servant de Messe ?</h2>
+            
+            <div class="section">
+                <h3>Mission du Servant</h3>
+                <p>Le servant de messe est un jeune baptisé qui aide le prêtre pendant la célébration eucharistique. Il participe activement à la liturgie et aide les fidèles à mieux prier.</p>
+            </div>
+
+            <div class="section">
+                <h3>Qualités requises</h3>
+                <div class="step">
+                    <h4>🕊️ Spiritualité</h4>
+                    <p>Avoir une vie de prière et être en état de grâce</p>
+                </div>
+                <div class="step">
+                    <h4>🎯 Attention</h4>
+                    <p>Être attentif aux gestes du prêtre et aux moments de la messe</p>
+                </div>
+                <div class="step">
+                    <h4>🤝 Service</h4>
+                    <p>Avoir l'esprit de service et d'humilité</p>
+                </div>
+                <div class="step">
+                    <h4>📚 Connaissance</h4>
+                    <p>Connaître le déroulement de la messe et les réponses liturgiques</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h3>💡 Le saviez-vous ?</h3>
+                <p>Le service de l'autel est une école de vie spirituelle. De nombreux prêtres ont commencé leur vocation en servant la messe dans leur jeunesse !</p>
+            </div>
+        </div>
+
+        <div id="preparation" class="tab-content">
+            <h2>⚡ Préparation avant la Messe</h2>
+
+            <div class="section">
+                <h3>Préparation spirituelle</h3>
+                <div class="step">
+                    <h4>🙏 Prière personnelle</h4>
+                    <p>Arriver 15 minutes avant la messe pour se recueillir et prier</p>
+                </div>
+                <div class="step">
+                    <h4>💭 Intention</h4>
+                    <p>Offrir son service pour la gloire de Dieu et le bien des fidèles</p>
+                </div>
+                <div class="step">
+                    <h4>📖 Lecture</h4>
+                    <p>Connaître les lectures du jour si possible</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Préparation matérielle</h3>
+                <div class="step">
+                    <h4>👕 Tenue</h4>
+                    <p>Vêtements propres et sobres, chaussures fermées</p>
+                </div>
+                <div class="step">
+                    <h4>🕯️ Vérification de l'autel</h4>
+                    <p>S'assurer que tout est en place : calice, patène, purificatoire, etc.</p>
+                </div>
+                <div class="step">
+                    <h4>🔥 Allumage des cierges</h4>
+                    <p>Allumer les cierges de l'autel avec respect</p>
+                </div>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ Points d'attention</h3>
+                <p>Toujours manipuler les objets sacrés avec précaution et respect. Ne jamais courir dans l'église ou faire du bruit pendant la préparation.</p>
+            </div>
+        </div>
+
+        <div id="deroulement" class="tab-content">
+            <h2>📋 Déroulement de la Messe</h2>
+
+            <div class="section">
+                <h3>1. Rites d'ouverture</h3>
+                <div class="step">
+                    <h4>🚶 Procession d'entrée</h4>
+                    <p>Accompagner le prêtre, porter la croix ou les cierges selon les indications</p>
+                </div>
+                <div class="step">
+                    <h4>💦 Aspersion (si prévue)</h4>
+                    <p>Présenter le seau d'eau bénite et l'aspersoir au prêtre</p>
+                </div>
+                <div class="step">
+                    <h4>🔔 Sonnette</h4>
+                    <p>Sonner à la fin du "Gloire à Dieu" si c'est la coutume</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>2. Liturgie de la Parole</h3>
+                <div class="step">
+                    <h4>📖 Lectures</h4>
+                    <p>Rester attentif et participer aux réponses</p>
+                </div>
+                <div class="step">
+                    <h4>🕊️ Évangile</h4>
+                    <p>Se lever pour l'Évangile, parfois accompagner avec des cierges</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>3. Liturgie eucharistique</h3>
+                <div class="step">
+                    <h4>🍞 Offertoire</h4>
+                    <p>Apporter les offrandes (pain, vin, eau) au prêtre</p>
+                </div>
+                <div class="step">
+                    <h4>💧 Lavabo</h4>
+                    <p>Présenter l'eau et le linge pour le lavage des mains</p>
+                </div>
+                <div class="step">
+                    <h4>🔔 Consécration</h4>
+                    <p>Sonner la sonnette aux moments appropriés (élévation)</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>4. Rite de communion</h3>
+                <div class="step">
+                    <h4>🙏 Notre Père</h4>
+                    <p>Participer à la prière commune</p>
+                </div>
+                <div class="step">
+                    <h4>✋ Paix</h4>
+                    <p>Échanger le signe de paix avec recueillement</p>
+                </div>
+                <div class="step">
+                    <h4>🍞 Communion</h4>
+                    <p>Recevoir la communion en premier ou selon les indications</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>5. Rite de conclusion</h3>
+                <div class="step">
+                    <h4>📿 Action de grâce</h4>
+                    <p>Moment de recueillement après la communion</p>
+                </div>
+                <div class="step">
+                    <h4>🚶 Procession de sortie</h4>
+                    <p>Accompagner le prêtre vers la sacristie</p>
+                </div>
+                <div class="step">
+                    <h4>🕯️ Extinction des cierges</h4>
+                    <p>Éteindre les cierges après la messe</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="objets" class="tab-content">
+            <h2>⚱️ Objets Sacrés et Liturgiques</h2>
+
+            <div class="objects-grid">
+                <div class="object-card">
+                    <h4>🏆 Calice</h4>
+                    <p>Coupe sacrée pour consacrer le vin qui devient le Sang du Christ</p>
+                </div>
+                <div class="object-card">
+                    <h4>🔘 Patène</h4>
+                    <p>Petit plateau pour l'hostie qui devient le Corps du Christ</p>
+                </div>
+                <div class="object-card">
+                    <h4>🕯️ Cierges</h4>
+                    <p>Bougies symbolisant la lumière du Christ</p>
+                </div>
+                <div class="object-card">
+                    <h4>✝️ Crucifix</h4>
+                    <p>Croix avec le Christ, centre de la foi chrétienne</p>
+                </div>
+                <div class="object-card">
+                    <h4>🧺 Navette</h4>
+                    <p>Petit récipient pour l'encens</p>
+                </div>
+                <div class="object-card">
+                    <h4>💨 Encensoir</h4>
+                    <p>Récipient pour brûler l'encens</p>
+                </div>
+                <div class="object-card">
+                    <h4>🔔 Sonnette</h4>
+                    <p>Pour marquer les moments importants</p>
+                </div>
+                <div class="object-card">
+                    <h4>🧽 Purificatoire</h4>
+                    <p>Linge pour essuyer le calice</p>
+                </div>
+                <div class="object-card">
+                    <h4>💧 Burettes</h4>
+                    <p>Petits vases pour l'eau et le vin</p>
+                </div>
+                <div class="object-card">
+                    <h4>🍞 Corporal</h4>
+                    <p>Linge carré sur lequel sont posés le calice et la patène</p>
+                </div>
+                <div class="object-card">
+                    <h4>📖 Missel</h4>
+                    <p>Livre contenant les prières de la messe</p>
+                </div>
+                <div class="object-card">
+                    <h4>🕊️ Colombe</h4>
+                    <p>Récipient pour conserver les hosties consacrées</p>
+                </div>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ Manipulation des objets sacrés</h3>
+                <p>Les objets consacrés (calice, patène, corporal) doivent être manipulés avec un respect particulier. Seuls les clercs et servants autorisés peuvent les toucher.</p>
+            </div>
+        </div>
+
+        <div id="prieres" class="tab-content">
+            <h2>🙏 Prières du Servant</h2>
+
+            <div class="section">
+                <h3>Prière avant la messe</h3>
+                <div class="prayer-box">
+                    <p>"Seigneur Jésus, je vais avoir l'honneur de vous servir à l'autel. Donnez-moi la grâce de le faire avec piété, attention et respect. Que mon service vous soit agréable et aide les fidèles à mieux vous prier. Amen."</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Prière après la messe</h3>
+                <div class="prayer-box">
+                    <p>"Merci, Seigneur, de m'avoir permis de vous servir. Pardonnez mes distractions et mes négligences. Que cette messe porte du fruit dans ma vie et dans celle de tous ceux qui y ont participé. Amen."</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Principales réponses liturgiques</h3>
+                <div class="step">
+                    <h4>Au début de la messe</h4>
+                    <p>P: "Au nom du Père et du Fils et du Saint-Esprit"<br>
+                    R: "Amen"</p>
+                </div>
+                <div class="step">
+                    <h4>Pendant l'Évangile</h4>
+                    <p>P: "Évangile de Jésus Christ selon saint..."<br>
+                    R: "Gloire à toi, Seigneur"</p>
+                </div>
+                <div class="step">
+                    <h4>À la fin de l'Évangile</h4>
+                    <p>P: "Acclamons la Parole de Dieu"<br>
+                    R: "Louange à toi, Seigneur Jésus"</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Prière à saint Jean Berchmans</h3>
+                <div class="prayer-box">
+                    <p>"Saint Jean Berchmans, patron des servants de messe, vous qui avez dit que servir la messe était votre plus grande joie, obtenez-nous la grâce de servir Dieu avec la même ferveur et la même fidélité. Amen."</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="quiz" class="tab-content">
+            <h2>🎯 Quiz des Servants</h2>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    1. Quel est le nom du linge carré sur lequel sont posés le calice et la patène ?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, false)">Le purificatoire</div>
+                    <div class="quiz-option" onclick="selectOption(this, true)">Le corporal</div>
+                    <div class="quiz-option" onclick="selectOption(this, false)">La pale</div>
+                </div>
+                <div class="quiz-result" id="result1"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    2. À quel moment sonne-t-on la sonnette pendant la consécration ?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, false)">Au début de la prière eucharistique</div>
+                    <div class="quiz-option" onclick="selectOption(this, true)">Pendant l'élévation</div>
+                    <div class="quiz-option" onclick="selectOption(this, false)">Après la communion</div>
+                </div>
+                <div class="quiz-result" id="result2"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    3. Que doit faire un servant avant la messe ?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, false)">Arriver juste à l'heure</div>
+                    <div class="quiz-option" onclick="selectOption(this, true)">Arriver 15 minutes avant pour se préparer</div>
+                    <div class="quiz-option" onclick="selectOption(this, false)">Arriver en retard</div>
+                </div>
+                <div class="quiz-result" id="result3"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    4. Qui est le patron des servants de messe ?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, false)">Saint Jean-Baptiste</div>
+                    <div class="quiz-option" onclick="selectOption(this, true)">Saint Jean Berchmans</div>
+                    <div class="quiz-option" onclick="selectOption(this, false)">Saint Jean l'Évangéliste</div>
+                </div>
+                <div class="quiz-result" id="result4"></div>
+            </div>
+
+            <button class="quiz-button" onclick="resetQuiz()">Recommencer le quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'introduction';
+        let quizAnswers = {};
+
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Hide all tab buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate corresponding button
+            event.target.classList.add('active');
+            
+            currentTab = tabName;
+        }
+
+        function selectOption(element, isCorrect) {
+            // Remove previous selections in this question
+            const siblings = element.parentElement.querySelectorAll('.quiz-option');
+            siblings.forEach(sibling => sibling.classList.remove('selected'));
+            
+            // Select current option
+            element.classList.add('selected');
+            
+            // Get question number
+            const questionNum = element.closest('.quiz-container').querySelector('.quiz-question').textContent.charAt(0);
+            
+            // Store answer
+            quizAnswers[questionNum] = isCorrect;
+            
+            // Show result
+            const resultDiv = element.closest('.quiz-container').querySelector('.quiz-result');
+            if (isCorrect) {
+                resultDiv.textContent = '✅ Correct ! Bonne réponse.';
+                resultDiv.className = 'quiz-result quiz-correct';
+            } else {
+                resultDiv.textContent = '❌ Incorrect. Essayez encore !';
+                resultDiv.className = 'quiz-result quiz-incorrect';
+            }
+        }
+
+        function resetQuiz() {
+            // Clear all selections
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Clear all results
+            const results = document.querySelectorAll('.quiz-result');
+            results.forEach(result => {
+                result.textContent = '';
+                result.className = 'quiz-result';
+            });
+            
+            // Reset answers
+            quizAnswers = {};
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('introduction');
+        });
+    </script>
+</body>
+</html>
